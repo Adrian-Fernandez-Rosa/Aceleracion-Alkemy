@@ -28,7 +28,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<AuthenticateResponse> signIn(@RequestBody AuthenticateRequest authRequest) throws Exception {
-        return ResponseEntity.ok(authService.login(authRequest.getEmail(), authRequest.getPassword()));
+        return ResponseEntity.ok(authService.login(authRequest));
 
     }
 }

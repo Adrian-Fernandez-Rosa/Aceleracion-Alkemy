@@ -7,12 +7,10 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import com.alkemy.ong.auth.utility.RoleEnum;
@@ -20,6 +18,7 @@ import com.alkemy.ong.exception.EmailAlreadyExistException;
 import com.alkemy.ong.models.entity.Role;
 import com.alkemy.ong.models.entity.User;
 import com.alkemy.ong.models.mapper.UserMapper;
+import com.alkemy.ong.models.request.AuthenticateRequest;
 import com.alkemy.ong.models.request.RegisterRequest;
 import com.alkemy.ong.models.response.AuthenticateResponse;
 import com.alkemy.ong.models.response.RegisterResponse;
@@ -79,20 +78,20 @@ public class AuthServiceImpl implements AuthService, UserDetailsService {
 
 		return registerResponse;
 	}
+        private User getUser(String email) {
+        User user = userRepository.findByEmail(email);
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found");
+        }        
+        return user;
+    }
 
 	@Override
-	public AuthenticateResponse login(String email, String password) throws Exception {
-		try {
-			Authentication authentication = authenticationManager
-					.authenticate(new UsernamePasswordAuthenticationToken(email, password));
-
-			SecurityContextHolder.getContext().setAuthentication(authentication);
-		} catch (Exception e) {
-			throw new Exception(e.getMessage());
-		}
-		return new AuthenticateResponse(email, password);
-
-	}
+	public AuthenticateResponse login(AuthenticateRequest request) throws Exception {		
+        User user =getUser(request.getEmail());       
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(),request.getPassword()));
+        return new AuthenticateResponse(jwtUtil.generateToken(user), user.getEmail(), user.getAuthorities());
+ 	}
 
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

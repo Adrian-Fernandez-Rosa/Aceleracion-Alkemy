@@ -83,6 +83,8 @@
 		<dependency>
 			<groupId>com.sendgrid</groupId>
 			<artifactId>sendgrid-java</artifactId>
+		 <version>4.7.2</version>
+		 <type>jar</type>
 		</dependency>
 		<dependency>
 			<groupId>javax.validation</groupId>
