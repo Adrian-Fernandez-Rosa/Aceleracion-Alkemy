@@ -13,5 +13,5 @@ public interface ActivitiesService {
     void updateActivities(Long id, ActivitiesDto activity) throws Exception;
 
     Activities findById(Long id);
-
+        
 }
