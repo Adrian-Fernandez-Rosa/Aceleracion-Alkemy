@@ -1,0 +1,161 @@
+{
+	"info": {
+		"_postman_id": "08d7009b-f125-407a-9543-39ae596d2d79",
+		"name": "testimonialv2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Testimonial",
+			"item": [
+				{
+					"name": "save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"La accrion de cada dia\",\n    \"content\":\"Otra sarasa del no se por que\",\n    \"image\":\"hola.png\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/testimonials",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"testimonials"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdWFucGVyYWx0YUBob3RtYWlsLmNvbSIsImlhdCI6MTY1NDI4MDcwMywiZXhwIjoxNjU0MzQxMTgzfQ.M3CNjHUGrNwwJx585R9vWxCsgEMNtBhuNsuODA2ypVQFKKenG5FGL2DRQqro41kFMuBKxiO-xHoi-rZP4m39uw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \n    \"name\":\"Guantes Blancos\",\n    \"content\":\"el misterioso caso de los guantes blancos \",\n    \"image\":\"blanco.png\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8090/testimonials/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"testimonials",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8090/testimonials/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"testimonials",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "paginacion",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/testimonials?page=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"testimonials"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get one",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/testimonials/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"testimonials",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

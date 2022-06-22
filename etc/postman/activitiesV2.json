@@ -1,0 +1,116 @@
+{
+	"info": {
+		"_postman_id": "afe5d496-ace2-424b-8609-f184937c7e14",
+		"name": "activities",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "activities",
+			"item": [
+				{
+					"name": "activities",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZHJpYW40QGFkcmlhbi5jb20iLCJpYXQiOjE2NTQyMzg4NzgsImV4cCI6MTY1NDI5OTM1OH0.kvtfbVSH1LFCzVpwkPEZWc_HYC9PpMn8qI0BVQhxN64tw3yD5w7PuDgv4f8bSTNBx32dRfpYYNjJbzHtFaVo2Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"hacer algo\",\r\n    \"content\": \"esta actividad es actividosa\",\r\n    \"image\": \"imagina.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/ong/activities",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ong",
+								"activities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update actividad",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZHJpYW40QGFkcmlhbi5jb20iLCJpYXQiOjE2NTQyMzg4NzgsImV4cCI6MTY1NDI5OTM1OH0.kvtfbVSH1LFCzVpwkPEZWc_HYC9PpMn8qI0BVQhxN64tw3yD5w7PuDgv4f8bSTNBx32dRfpYYNjJbzHtFaVo2Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \r\n    \"name\": \"no hacer nada\",\r\n    \"content\": \"esta actividad NO es actividosa\",\r\n    \"image\": \"marginal.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/ong/activities/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ong",
+								"activities",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}
